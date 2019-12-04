@@ -3,16 +3,10 @@ import requests
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver import Chrome
-from selenium.webdriver import Chrome
-import re
 import time
-from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.keys import Keys
 from elasticsearch import Elasticsearch
 from datetime import datetime
-import daemon
-
-
 
 #채널의 기본적인 정보를 BeautifulSoup을 이용해 가져오고 getViews()를 실행함
 def getChannelData(chanel_id):
@@ -88,7 +82,7 @@ def uploadData(channel_id):
 def run(channel_id):
     while True:
         uploadData(channel_id)
-        time.sleep(21600)
+        time.sleep(21600)햣 
 
 if __name__ == "__main__":
     #elaseicsearch 연결
