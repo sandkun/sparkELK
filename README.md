@@ -1,4 +1,4 @@
-# ELK를 이용한 유튜브 데이터 수집
+# python Selenium을 이용한 유튜브 데이터 수집
 유튜브 채널의 정보를 elasticsearch에 저장하는 크롤러입니다.
 
 # 주요기능
