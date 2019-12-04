@@ -1,4 +1,6 @@
 # python Selenium을 이용한 유튜브 데이터 수집
+> 자신의 elasticsearch에 저장하는 방식으로 사용하려면 elasticsearch가 실행되어 있어야 합니다. <br>
+
 유튜브 채널의 정보를 elasticsearch에 저장하는 크롤러입니다.
 
 # 주요기능
