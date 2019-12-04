@@ -12,9 +12,7 @@ from elasticsearch import Elasticsearch
 from datetime import datetime
 import daemon
 
-#elaseicsearch 연결
-es = Elasticsearch(hosts="localhost", port=9200)
-channel_id = input("채널 ID 입력\n")
+
 
 #채널의 기본적인 정보를 BeautifulSoup을 이용해 가져오고 getViews()를 실행함
 def getChannelData(chanel_id):
@@ -23,7 +21,7 @@ def getChannelData(chanel_id):
     html = req.text
     soup = BeautifulSoup(html, "html.parser")
     # 구독자
-    subscriber = soup.select(".subscribed")[0].text if soup.select(".subscribed") != [] else -1
+    subscriber = soup.select(".subscribed")[0].text if soup.select(".subscribed") != [] else "-1"
     # 이름
     name = soup.select("meta[itemprop='name']")[0].get('content')
 
@@ -87,4 +85,15 @@ def uploadData(channel_id):
     es.index(index="youtuber", body=data)
     print("입력 완료" + str(datetime.now()))
     
-uploadData(channel_id)
+def run(channel_id):
+    while True:
+        uploadData(channel_id)
+        time.sleep(21600)
+
+if __name__ == "__main__":
+    #elaseicsearch 연결
+    es = Elasticsearch(hosts="localhost", port=9200)
+    #채널 ID 입력 받기
+    channel_id = input("채널 ID 입력\n")
+
+    run(channel_id)
